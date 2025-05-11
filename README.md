@@ -307,3 +307,9 @@ engine.run()
    ```sh
    make format
    ```
+
+8. **Build the project:**
+
+   ```sh
+   uv build
+   ```
