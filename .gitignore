@@ -1,5 +1,8 @@
 tmp/
 
+# Build artifacts
+*.egg-info/
+
 # Pytest ignores
 coverage_*
 .coverage
