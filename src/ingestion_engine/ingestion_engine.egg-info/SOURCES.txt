@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/ingestion_engine/ingestion_engine.egg-info/PKG-INFO
+src/ingestion_engine/ingestion_engine.egg-info/SOURCES.txt
+src/ingestion_engine/ingestion_engine.egg-info/dependency_links.txt
+src/ingestion_engine/ingestion_engine.egg-info/requires.txt
+src/ingestion_engine/ingestion_engine.egg-info/top_level.txt
+src/ingestion_engine/readers/__init__.py
+src/ingestion_engine/readers/base_reader.py
+src/ingestion_engine/readers/spark_reader.py
+src/ingestion_engine/writers/__init__.py
+src/ingestion_engine/writers/base_writer.py
+src/ingestion_engine/writers/spark_writer.py
+tests/test_config.py
+tests/test_ingestion_engine.py

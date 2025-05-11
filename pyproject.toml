@@ -28,4 +28,5 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-exclude = ["test*"]
+where = ["src"]
+exclude = ["tests*"]
