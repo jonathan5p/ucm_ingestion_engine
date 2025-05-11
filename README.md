@@ -98,7 +98,66 @@ engine = IngestionEngine(reader, writer, task_config)
 engine.run()
 ```
 
-Certainly! Here's the new section for the README that includes a Kafka ETL example:
+### Batch ETL Reading Config from Config File
+
+This example demonstrates how to read configuration from a YAML file and use it to perform a batch ETL task. The configuration file will contain the necessary details for both the reader and the writer.
+
+#### Example YAML Configuration File (`config.yaml`)
+
+```yaml
+task_name: "example_batch_etl"
+owner: "Your Name"
+read_config:
+  format: "parquet"
+  source_path: "path/to/source"
+  schema_path: "path/to/schema.json"
+write_config:
+  target_path: "path/to/target"
+  format: "parquet"
+  write_mode: "append"
+```
+
+#### Batch ETL Script
+
+```python
+from ingestion_engine.config import TaskConfig, ReadConfig, WriteConfig
+from ingestion_engine.engine import IngestionEngine
+from ingestion_engine.readers.spark_reader import SparkReaderBuilder
+from ingestion_engine.writers.spark_writer import SparkWriterBuilder
+from pyspark.sql import SparkSession
+
+# Initialize Spark session
+spark = SparkSession.builder.appName("BatchETL").getOrCreate()
+
+# Read task configuration from YAML file
+config_file = "config_path/config.yaml"
+task_config = TaskConfig.read_config_from_yaml(config_file)
+
+# Build reader and writer
+reader = (
+    SparkReaderBuilder()
+    .set_spark_session(spark)
+    .set_format(task_config.read_config.format)
+    .set_source_path(task_config.read_config.source_path)
+    .set_schema_path(task_config.read_config.schema_path)
+    .build()
+)
+
+writer = (
+    SparkWriterBuilder()
+    .set_spark_session(spark)
+    .set_target_path(task_config.write_config.target_path)
+    .set_format(task_config.write_config.format)
+    .set_write_mode(task_config.write_config.write_mode)
+    .build()
+)
+
+# Run the ingestion engine
+engine = IngestionEngine(reader, writer, task_config)
+engine.run()
+```
+
+The ```read_config_from_yaml``` method in the BaseConfig class is designed to read a YAML file and populate the TaskConfig object with the necessary details for the ETL process. This method assumes that the YAML file is structured correctly and contains all the required fields with the same names as they are defined in the corresponding config class definitions (TaskConfig, ReadConfig, WriteConfig).
 
 ### Kafka ETL Example
 
