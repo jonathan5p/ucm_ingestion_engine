@@ -24,13 +24,15 @@ class ReadConfig(BaseModel):
     autoloader_schema_location: str | None = None
 
     # Kafka Specific options
-    topic: str | None = None
-    starting_offsets: str | None = None
+    kafka_topic: str | None = None
+    kafka_starting_offsets: str | None = None
     kafka_bootstrap_servers: str | None = None
     kafka_security_protocol: str | None = None
     kafka_sasl_mechanism: str | None = None
     kafka_sasl_jaas_config: str | None = os.getenv("KAFKA_SASL_JAAS_CONFIG", None)
     kafka_include_headers: str | None = None
+    kafka_value_format: str | None = None
+    kafka_value_schema: str | None = None
 
 
 class WriteConfig(BaseModel):
