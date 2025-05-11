@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ingestion-engine"
+version = "1.0.0"
+authors = [
+    { name = "Jonathan Roncancio", email = "jonatron@ucm.es" }
+]
+description = "Generic lake house ingestion engine based on Apache Spark"
+readme = "README.md"
+requires-python = ">=3.11"
+urls = { "Homepage" = "https://github.com/jonathan5p" }
+dependencies = [
+    "delta-spark>=3.3.1",
+    "numpy>=2.2.5",
+    "pydantic>=2.11.3",
+    "pyspark>=3.5.5",
+    "pyyaml>=6.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "pillow>=11.2.1",
+    "pytest>=8.3.5",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["test*"]
