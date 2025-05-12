@@ -9,7 +9,7 @@ setup:
 	@echo "Activating virtual environment..."
 	@sh $(VENV_DIR)/bin/activate
 	@echo "Installing dependencies..."
-	@uv sync
+	@uv sync --dev
 	@echo "Project setup complete."
 
 # Run tests
