@@ -286,7 +286,7 @@ engine.run()
    ```
 
 
-5. ** Run your python script:**
+5. **Run your python script:**
 
    ```sh
    uv run examples/kafka/kafka_etl.py
